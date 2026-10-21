@@ -1,0 +1,15 @@
+{
+  "name": "sdd-engineering",
+  "version": "1.0.0",
+  "description": "Spec-driven development workflow: spec-creator → implementation-planner → run-plan (implementer → architecture review → plan-verifier) → workflow-retro, with a spec linter, a human-only approval stamp, guard hooks and engineering-insights.",
+  "author": { "name": "AI Engineering" },
+  "homepage": "https://vadymshkarbul.github.io/dev-digest-ai-marketplace/#/plugin/sdd-engineering",
+  "repository": "https://github.com/VadymShkarbul/dev-digest-ai-marketplace",
+  "license": "MIT",
+  "keywords": ["sdd", "spec", "planning", "workflow", "agents", "review"],
+  "dependencies": [
+    { "name": "engineering-paved-path", "version": "^1.0.0" },
+    { "name": "research-tools", "version": "^1.0.0" },
+    { "name": "architecture-review", "version": "^1.0.0" }
+  ]
+}

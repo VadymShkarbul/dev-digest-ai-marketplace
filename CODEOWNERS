@@ -1,0 +1,23 @@
+# Each path needs a review from its owning team. Together with the main-branch ruleset
+# ("Require review from Code Owners"), no plugin change merges without its owner.
+# Team handles are the intended owners; while the org teams do not exist yet, the
+# maintainer account stands in for each of them.
+
+*                                       @VadymShkarbul
+
+# Catalog, policy, CI and the site — AI Engineering
+/.claude-plugin/                        @VadymShkarbul
+/docs/                                  @VadymShkarbul
+/.github/                               @VadymShkarbul
+/scripts/                               @VadymShkarbul
+/site/                                  @VadymShkarbul
+
+# Plugins — each team owns its plugin directory
+/plugins/engineering-paved-path/        @VadymShkarbul   # Platform Team
+/plugins/research-tools/                @VadymShkarbul   # AI Engineering
+/plugins/architecture-review/           @VadymShkarbul   # Architecture Guild
+/plugins/sdd-engineering/               @VadymShkarbul   # AI Engineering
+
+# Scripts and hooks run on consumers' machines — always also an AI Engineering review
+/plugins/*/skills/*/scripts/            @VadymShkarbul
+/plugins/*/hooks/                       @VadymShkarbul

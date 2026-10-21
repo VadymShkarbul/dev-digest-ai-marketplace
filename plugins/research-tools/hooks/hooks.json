@@ -1,0 +1,21 @@
+{
+  "description": "Keeps research-tools:researcher read-only (keys on agent_type; the main session is unaffected).",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|NotebookEdit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "timeout": 10,
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/hooks/readonly-guard.mjs",
+              "research-tools:researcher"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

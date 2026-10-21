@@ -1,0 +1,21 @@
+{
+  "name": "engineering-paved-path",
+  "version": "1.0.0",
+  "description": "The team's single source of technical skills \u2014 React, React Testing Library, Next.js, Fastify, frontend architecture, Drizzle, PostgreSQL, Zod, TypeScript, security and Mermaid \u2014 referenced by other plugins as engineering-paved-path:<skill>.",
+  "author": {
+    "name": "Platform Team"
+  },
+  "homepage": "https://vadymshkarbul.github.io/dev-digest-ai-marketplace/#/plugin/engineering-paved-path",
+  "repository": "https://github.com/VadymShkarbul/dev-digest-ai-marketplace",
+  "license": "SEE LICENSE IN README.md",
+  "keywords": [
+    "react",
+    "nextjs",
+    "fastify",
+    "typescript",
+    "testing",
+    "database",
+    "security",
+    "best-practices"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "dev-digest-ai-marketplace",
+  "description": "AI Engineering's Claude Code plugins: shared engineering skills, read-only research and architecture-review agents, and the spec-driven development workflow.",
+  "owner": { "name": "AI Engineering" },
+  "plugins": [
+    { "name": "engineering-paved-path", "source": "./plugins/engineering-paved-path", "description": "Shared technical skills (React, Next.js, Fastify, Drizzle, PostgreSQL, Zod, TypeScript, testing, security, Mermaid).", "category": "development" },
+    { "name": "research-tools", "source": "./plugins/research-tools", "description": "Generic read-only researcher agent for repository and external-docs questions.", "category": "development" },
+    { "name": "architecture-review", "source": "./plugins/architecture-review", "description": "Read-only architecture reviewer that uses the repository's own documented boundaries.", "category": "development" },
+    { "name": "sdd-engineering", "source": "./plugins/sdd-engineering", "description": "Spec-driven development: spec → plan → implement → review → retro.", "category": "development" }
+  ]
+}

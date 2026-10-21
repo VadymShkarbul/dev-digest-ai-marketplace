@@ -1,0 +1,20 @@
+{
+  "description": "Write-scope and read-only-Bash guard for sdd-engineering's own subagents (keys on agent_type; the main session is unaffected).",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|NotebookEdit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "timeout": 10,
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/hooks/agent-guard.mjs"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

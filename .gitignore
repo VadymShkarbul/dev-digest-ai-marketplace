@@ -1,0 +1,12 @@
+# generated catalog index and site build (rebuilt in CI — never committed)
+site/public/index.json
+site/public/releases.json
+site/public/stats.json
+site/public/bodies/
+site/dist/
+site/node_modules/
+node_modules/
+# eval output
+plugins/*/evals/results/
+eval-results/
+.DS_Store

@@ -1,0 +1,13 @@
+{
+  "name": "architecture-review",
+  "version": "1.0.0",
+  "description": "A read-only architecture-reviewer agent that checks a diff against the repository's OWN documented boundaries and declared architecture gate, plus the engineering-paved-path stack skills.",
+  "author": { "name": "Architecture Guild" },
+  "homepage": "https://vadymshkarbul.github.io/dev-digest-ai-marketplace/#/plugin/architecture-review",
+  "repository": "https://github.com/VadymShkarbul/dev-digest-ai-marketplace",
+  "license": "MIT",
+  "keywords": ["architecture", "review", "boundaries", "read-only", "agent"],
+  "dependencies": [
+    { "name": "engineering-paved-path", "version": "^1.0.0" }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "research-tools",
+  "version": "1.0.0",
+  "description": "A generic read-only researcher agent: repository investigation (call sites, contracts, history) and external documentation research, with evidence and an explicit Not-found section.",
+  "author": { "name": "AI Engineering" },
+  "homepage": "https://vadymshkarbul.github.io/dev-digest-ai-marketplace/#/plugin/research-tools",
+  "repository": "https://github.com/VadymShkarbul/dev-digest-ai-marketplace",
+  "license": "MIT",
+  "keywords": ["research", "read-only", "agent", "discovery", "documentation"]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "notes-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tiny in-memory notes library used as an sdd-engineering eval fixture.",
+  "scripts": {
+    "test": "node --test"
+  }
+}
