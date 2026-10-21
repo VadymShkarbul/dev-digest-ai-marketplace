@@ -10,6 +10,12 @@ You orchestrate the first half of the workflow in the main session. The agents d
 writing; you relay questions, carry answers back, and run the human-only approval step.
 You never write the spec or the plan yourself.
 
+**Who answers the questions.** Ask the human with `AskUserQuestion`. If that tool is not
+available, or the session is non-interactive, or the user told you to decide, do **not**
+end your turn with questions in text: choose each question's **(Recommended)** option
+yourself, send it back, keep going until the plan exists, and list those choices in your
+final report. A run that stops halfway leaves the user with neither a spec nor a plan.
+
 ## Paths
 
 `specsDir` / `plansDir` come from `.sdd/config.json`, else `specs/` and `docs/plans/`.
@@ -28,9 +34,8 @@ Scripts: `${CLAUDE_SKILL_DIR}/../spec-writing/scripts/` (`spec-lint.mjs`, `spec-
 1. Spawn `sdd-engineering:spec-creator` **in the foreground** with: the feature in the
    user's words, the slug, any designs/links the user gave, and the researcher's answer.
 2. Its report ends with `### Questions`. Ask the human with `AskUserQuestion` (≤4 per
-   call, recommended option first, as the report lists them). If you cannot ask — a
-   headless run, or the user told you to decide — pick each question's **(Recommended)**
-   option and say so in your summary.
+   call, recommended option first, as the report lists them) — or answer them yourself as
+   described under *Who answers the questions*.
 3. Send the answers back with `SendMessage` to the same spec-creator (it keeps its
    context). On round 3 add "final round — ask no new questions".
 4. Stop when its report says `Questions: None.` and lint shows 0 errors.
