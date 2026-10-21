@@ -109,4 +109,20 @@ eval case put the user's approval in the system prompt.
 | project instructions kept | the spec-creator read the project's own docs and surfaced its backlog conflict (BL-031); no plugin `CLAUDE.md`, nothing in `AGENTS.md` changed |
 | found a plugin bug | `capture-gates.sh` executed a backticked *note* on gate line 5 (rc 127) → fixed in 1.1.0 |
 
+### Update and rollback in `pastry-recipe-app` (rehearsed 2026-10-21)
+
+| Step | Command | Observed |
+| --- | --- | --- |
+| catalog update | `claude plugin marketplace update dev-digest-ai-marketplace` | catalog offers `sdd-engineering` 1.1.0 — **installed stays 1.0.0** |
+| plugin update | `claude plugin update sdd-engineering@dev-digest-ai-marketplace --scope project` | "updated from 1.0.0 to 1.1.0"; deps stay `1.0.0-a3a92506cb31`; no errors |
+| new session | `claude -p …` | `system:init.plugins`: `sdd-engineering 1.1.0`, deps 1.0.0; installed `spec-admin approve` refuses an uncovered spec ("US-2 (P1) is a mandatory requirement with no acceptance criterion"); the project's existing spec still lints clean |
+| leave latest | `claude plugin uninstall sdd-engineering@dev-digest-ai-marketplace --scope project --keep-data` · `claude plugin prune --scope project -y` | consumer removed, 3 auto-installed deps pruned |
+| stable channel | `claude plugin marketplace add "VadymShkarbul/dev-digest-ai-marketplace#stable" --scope project` · `claude plugin install sdd-engineering@dev-digest-ai-marketplace-stable --scope project` | all four at 1.0.0 (`a3a9250`), no errors |
+| smoke eval | `/sdd-engineering:run-plan review <plan>` stage R0 only | 5/5: loaded 1.0.0 from stable · all six agents present · `plan-admin` ran from the 1.0.0 cache · session ok · no agent spawned; 1.0.0 linter accepts the uncovered spec again (old rule back) |
+| project data | `shasum` over `specs/ docs/plans/ .sdd/` + the feature's code | `cf5674dbc113` before rollback = after rollback = after returning to latest |
+| back to latest | uninstall stable `--keep-data` · prune · `claude plugin install sdd-engineering@dev-digest-ai-marketplace --scope project` | `sdd-engineering 1.1.0`, deps 1.0.0, no errors |
+
+External state: none to restore — the SDD plugins make no network writes and commit nothing
+unless asked; the rehearsal changed only `.claude/settings.json` (which channel is enabled).
+
 <!-- RESULTS -->

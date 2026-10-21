@@ -46,9 +46,9 @@ marketplace with its own name**:
 | Channel | Marketplace name | Catalog file | Resolves to |
 | --- | --- | --- | --- |
 | `latest` | `dev-digest-ai-marketplace` | `.claude-plugin/marketplace.json` (relative paths) | `main`; dependency ranges → highest matching tag |
-| `stable` | `dev-digest-ai-marketplace-stable` | `channels/stable/.claude-plugin/marketplace.json` | every plugin pinned to a release tag **and** its commit SHA (`git-subdir` sources) |
+| `stable` | `dev-digest-ai-marketplace-stable` | branch `stable` (copy of `channels/stable/.claude-plugin/marketplace.json`) | every plugin pinned to a release tag **and** its commit SHA (`git-subdir` sources) |
 
-The stable catalog is generated, never hand-edited:
+The stable catalog is generated, never hand-edited, then copied to the `stable` branch:
 
 ```bash
 node scripts/make-channel.mjs --url https://github.com/VadymShkarbul/dev-digest-ai-marketplace.git \
@@ -60,10 +60,8 @@ Add a channel (pick one per project):
 ```bash
 # latest
 claude plugin marketplace add VadymShkarbul/dev-digest-ai-marketplace --scope project
-# stable — admins can also declare it in settings as
-#   "extraKnownMarketplaces": { "dev-digest-ai-marketplace-stable": { "source": { "source": "github",
-#      "repo": "VadymShkarbul/dev-digest-ai-marketplace", "path": "channels/stable" } } }
-claude plugin marketplace add <checkout>/channels/stable --scope project
+# stable — the `stable` branch carries the pinned catalog at its root
+claude plugin marketplace add "VadymShkarbul/dev-digest-ai-marketplace#stable" --scope project
 ```
 
 ## Update
@@ -91,7 +89,7 @@ channel, which pins the last verified release.
 claude plugin uninstall sdd-engineering@dev-digest-ai-marketplace --scope project --keep-data
 claude plugin prune --scope project -y         # drops the auto-installed latest dependencies
 # 2. install from stable
-claude plugin marketplace add <checkout>/channels/stable --scope project
+claude plugin marketplace add "VadymShkarbul/dev-digest-ai-marketplace#stable" --scope project
 claude plugin install sdd-engineering@dev-digest-ai-marketplace-stable --scope project
 claude plugin list --json                       # sdd-engineering 1.0.0, deps 1.0.0, no errors
 # 3. /reload-plugins (or a new session), then the smoke eval
