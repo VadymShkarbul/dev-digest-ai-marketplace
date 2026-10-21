@@ -67,13 +67,9 @@ eyeball the diff:
 cd /absolute/path/to/pkg && <command from the plan>; rc=$?
 ```
 
-Gate discovery order if the plan is silent: `.sdd/config.json` `gates` → commands named in
-`CLAUDE.md`/`AGENTS.md` → manifest scripts → CI workflow steps.
+If the plan lists no gates or says `NOT FOUND`, read
+`${CLAUDE_PLUGIN_ROOT}/skills/sdd-conventions/references/gates.md` before going on.
 
-- **No test command exists** (the plan says `NOT FOUND`): the items that depended on tests
-  are `not verifiable — no test command`, unless the plan records the human's decision to
-  accept a `manual:` check, in which case you perform that check if you can (read the
-  code path) or mark it `NOT MECHANICALLY CHECKABLE — needs a human`.
 - A browser-only item is `NOT MECHANICALLY CHECKABLE — needs a human`.
 - Never accept "tests pass" without running them yourself or marking them unrun.
 
@@ -112,20 +108,8 @@ A single verdict line **first**:
 
 ## Learnings and run notes (every run)
 
-- **Before you start,** read `.sdd/learnings/plan-verifier.md` in the repository root if
-  it exists. It holds lessons from earlier runs of this agent, chosen by a human through
-  `/sdd-engineering:workflow-retro`. Treat them as high-confidence guidance; if one
-  conflicts with the task or the code in front of you, report the conflict.
-- **Tools:** read files with Read and search with Grep/Glob. One plain command per Bash
-  call — no `cd … &&` chains (except the gate line above), heredocs, `$(…)` or process
-  substitution.
-- **End your final message** with this section, after everything else, one line each,
-  covering every round since your first launch; "none" is a fine answer:
-
-  ```markdown
-  ## Run notes
-  - Hard: <what slowed you down: an unclear instruction (cite file:line), a missing input, a blocked tool> | none
-  - Easy: <what the inputs made straightforward> | none
-  - Duplicated: <what you re-read or re-derived that an earlier stage already had> | none
-  - Missing: <input you needed but didn't get; anything you may have missed, and why> | none
-  ```
+- Before you start, read `.sdd/learnings/plan-verifier.md` if it exists — lessons a human kept via
+  `/sdd-engineering:workflow-retro`. Follow them; report any that conflict with the task.
+- One plain command per Bash call; read and write files with the file tools, not the shell.
+- End your final message with `## Run notes` — four lines `Hard:` / `Easy:` / `Duplicated:` /
+  `Missing:` (each one line or `none`). Format: `${CLAUDE_PLUGIN_ROOT}/skills/sdd-conventions/references/run-notes.md`.

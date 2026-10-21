@@ -15,5 +15,9 @@
 - Dropped from the DevDigest original: parallel workstreams, the security-reviewer and
   test-writer stages; DevDigest's `/spec` + `/feature` orchestrators are replaced by the
   generic `spec-to-plan` skill.
+- Agent prompts deduplicated (cost experiment, see docs/COST-BASELINE.md): EARS/ID rules
+  only in the preloaded `spec-writing` skill; gate discovery, the no-test-command protocol and
+  the Run notes format moved to the on-demand `sdd-conventions` references (−11 % agent
+  prompt bytes).
 - `run-plan` spawns every agent in the foreground (a background agent can outlive a
   headless session).

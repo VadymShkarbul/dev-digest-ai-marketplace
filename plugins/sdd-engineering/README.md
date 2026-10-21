@@ -26,6 +26,7 @@ you ─► sdd-engineering:spec-creator ──questions──► you ──answe
 | `plan-verifier` | agent | read-only item-by-item conformance check → `PASS`/`INCOMPLETE` |
 | `spec-to-plan` | skill (auto) | entry point: runs spec-creator rounds, the human approval, then the planner |
 | `spec-writing` | skill (reference) | template, EARS rules, references; `spec-lint.mjs`, `spec-admin.mjs` (preloaded into spec-creator) |
+| `sdd-conventions` | skill (reference) | shared rules read on demand: gate discovery + no-test-command protocol, Run notes format |
 | `run-plan` | skill (`/sdd-engineering:run-plan`, manual) | orchestrates implement → gates → review → fix loop |
 | `workflow-retro` | skill (`/sdd-engineering:workflow-retro`, manual) | measures a run from Claude Code transcripts, proposes learnings |
 | `engineering-insights` | skill | appends verified insights to a module's `INSIGHTS.md` |

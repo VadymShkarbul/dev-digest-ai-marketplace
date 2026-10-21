@@ -69,15 +69,9 @@ plan and the project instructions disagree, the instructions win and you note it
 ## Step 3 — run the gates
 
 Run the plan's *Verification gates* in order and report each command's **real** result.
-Gate discovery order if the plan is silent: `.sdd/config.json` `gates` → commands named
-in `CLAUDE.md`/`AGENTS.md` → manifest scripts (`package.json` `typecheck`/`test`,
-`Makefile`, `pyproject.toml`, `go test ./...`, `cargo test`) → CI workflow steps.
-
-- **No test command found** (and the plan recorded `NOT FOUND`): do not invent one and do
-  not install a test runner. Report `test: not run — no test command found (searched:
-  …)` and list the plan's `manual:` checks you performed with their outcome.
-- A failing gate: fix it if the fix is inside the plan's scope; otherwise leave it failing
-  and quote the output verbatim.
+A failing gate: fix it if the fix is inside the plan's scope; otherwise leave it failing
+and quote the output verbatim. If the plan lists no gates or says `NOT FOUND`, read
+`${CLAUDE_PLUGIN_ROOT}/skills/sdd-conventions/references/gates.md` before going on.
 
 ## Step 4 — verify your own diff (scope-limited)
 
@@ -126,20 +120,8 @@ Severity on your own findings is exactly `CRITICAL | WARNING | SUGGESTION`.
 
 ## Learnings and run notes (every run)
 
-- **Before you start,** read `.sdd/learnings/implementer.md` in the repository root if it
-  exists. It holds lessons from earlier runs of this agent, chosen by a human through
-  `/sdd-engineering:workflow-retro`. Treat them as high-confidence guidance; if one
-  conflicts with the task or the code in front of you, report the conflict.
-- **Tools:** read files with Read and search with Grep/Glob. One plain command per Bash
-  call — no `cd … &&` chains, heredocs, `$(…)` or process substitution. Write files with
-  Write/Edit, never through the shell.
-- **End your final message** with this section, after everything else, one line each,
-  covering every round since your first launch; "none" is a fine answer:
-
-  ```markdown
-  ## Run notes
-  - Hard: <what slowed you down: an unclear instruction (cite file:line), a missing input, a blocked tool> | none
-  - Easy: <what the inputs made straightforward> | none
-  - Duplicated: <what you re-read or re-derived that an earlier stage already had> | none
-  - Missing: <input you needed but didn't get; anything you may have missed, and why> | none
-  ```
+- Before you start, read `.sdd/learnings/implementer.md` if it exists — lessons a human kept via
+  `/sdd-engineering:workflow-retro`. Follow them; report any that conflict with the task.
+- One plain command per Bash call; read and write files with the file tools, not the shell.
+- End your final message with `## Run notes` — four lines `Hard:` / `Easy:` / `Duplicated:` /
+  `Missing:` (each one line or `none`). Format: `${CLAUDE_PLUGIN_ROOT}/skills/sdd-conventions/references/run-notes.md`.

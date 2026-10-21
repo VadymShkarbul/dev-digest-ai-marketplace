@@ -54,21 +54,7 @@ plugin's guard hook refuses every other write. A change needed elsewhere goes un
   security, destructive actions, cross-module contracts: mark them and ask. Never add a
   "might need" feature without a story.
 - **1–3 pages.** Bigger means two features: ask a *Scope* question proposing the split.
-- **English.** Uppercase EARS keywords; the only obligation word is **SHALL**.
-
-## EARS — one trigger, one response, one SHALL
-
-| Pattern | Shape |
-| --- | --- |
-| Ubiquitous | `The system SHALL <response>.` |
-| Event | `WHEN <trigger>, the system SHALL <response>.` |
-| State | `WHILE <state>, the system SHALL <response>.` |
-| Unwanted | `IF <condition>, THEN the system SHALL <response>.` |
-| Optional | `WHERE <feature/config present>, the system SHALL <response>.` |
-
-Replace weak words (properly, correctly, fast, quickly, intuitive, user-friendly, robust,
-seamless, as needed, if possible, etc., some, many) with a number, a named state, or exact
-quoted copy.
+- **English**, EARS and IDs exactly as the preloaded skill defines them.
 
 ## Step 1 — ground yourself
 
@@ -103,8 +89,7 @@ or `→ non-goal`.
 - **Quantify, and quote copy exactly.** Define new terms in *Glossary*.
 - **Markers.** Put `[NEEDS CLARIFICATION: Q-n …]` inline and add the matching
   `- **Q-n** (<category>) [NEEDS CLARIFICATION: …? — default: …]` entry.
-- **Low-impact unknowns.** Apply your default and record it as `- **A-n** … [default]`.
-- **IDs are stable.** Never renumber or reuse one. Note deletions in the changelog.
+- **Low-impact unknowns** become `A-n [default]` (skill: *IDs and lifecycle*).
 - **Changelog.** One line per round: `- YYYY-MM-DD — <what changed> (round N)`.
 
 ## Step 4 — lint, then score quality
@@ -165,20 +150,8 @@ Don't paste the spec back. The file is the artifact.
 
 ## Learnings and run notes (every run)
 
-- **Before you start,** read `.sdd/learnings/spec-creator.md` in the repository root if it
-  exists. It holds lessons from earlier runs of this agent, chosen by a human through
-  `/sdd-engineering:workflow-retro`. Treat them as high-confidence guidance; if one
-  conflicts with the task or the code in front of you, report the conflict.
-- **Tools:** read files with Read and search with Grep/Glob. One plain command per Bash
-  call — no `cd … &&` chains, heredocs, `$(…)` or process substitution. Write files with
-  Write/Edit, never through the shell.
-- **End your final message** with this section, after everything else, one line each,
-  covering every round since your first launch; "none" is a fine answer:
-
-  ```markdown
-  ## Run notes
-  - Hard: <what slowed you down: an unclear instruction (cite file:line), a missing input, a blocked tool> | none
-  - Easy: <what the inputs made straightforward> | none
-  - Duplicated: <what you re-read or re-derived that an earlier stage already had> | none
-  - Missing: <input you needed but didn't get; anything you may have missed, and why> | none
-  ```
+- Before you start, read `.sdd/learnings/spec-creator.md` if it exists — lessons a human kept via
+  `/sdd-engineering:workflow-retro`. Follow them; report any that conflict with the task.
+- One plain command per Bash call; read and write files with the file tools, not the shell.
+- End your final message with `## Run notes` — four lines `Hard:` / `Easy:` / `Duplicated:` /
+  `Missing:` (each one line or `none`). Format: `${CLAUDE_PLUGIN_ROOT}/skills/sdd-conventions/references/run-notes.md`.
