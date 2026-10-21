@@ -58,6 +58,8 @@ check the trace before changing the plugin.
 | API calls | 24 (19–29) | 27 (24–28) | +13 % · within noise |
 | Tool calls | 35 (33–54) | 39 (34–45) | +11 % · within noise |
 | Provider-reported spend, whole series | $0.1922 | $0.1725 | -10 % per run |
+| **Cost per successful workflow** (provider spend ÷ runs passing every grader) | **$0.0961** ($0.1922 ÷ 2) | **$0.0863** ($0.1725 ÷ 2) | -10 % · within noise |
+| Cost per workflow without a critical failure (provider spend ÷ runs) | $0.0641 ($0.1922 ÷ 3) | $0.0575 ($0.1725 ÷ 3) | -10 % · within noise |
 | Runs passing every grader | 2/3 | 2/3 | |
 | Runs without a critical failure | 3/3 | 3/3 | |
 | Mean score | 0.97 | 0.97 | |
