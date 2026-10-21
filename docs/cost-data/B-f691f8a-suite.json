@@ -1,0 +1,697 @@
+{
+ "schema": 1,
+ "ranAt": "2026-10-21T12:44:52.725Z",
+ "commit": "f691f8a",
+ "dirty": false,
+ "model": "anthropic/claude-haiku-5.5",
+ "judgeModel": "anthropic/claude-haiku-5.5",
+ "claudeVersion": "2.1.267 (Claude Code)",
+ "totalCostUsd": 0.166,
+ "providerSpendUsd": 0.1547,
+ "summary": [
+  {
+   "case": "architecture-review/flags-documented-boundary",
+   "runs": 1,
+   "passRate": 1,
+   "medianCostUsd": 0.00827,
+   "medianLatencySec": 24.278,
+   "medianApiCalls": 6,
+   "medianToolCalls": 10,
+   "medianTokens": {
+    "in": 14,
+    "out": 4215,
+    "cr": 167693,
+    "cw": 35895
+   },
+   "criticalFailures": []
+  },
+  {
+   "case": "research-tools/answers-repo-question",
+   "runs": 1,
+   "passRate": 1,
+   "medianCostUsd": 0.00749,
+   "medianLatencySec": 23.079,
+   "medianApiCalls": 6,
+   "medianToolCalls": 7,
+   "medianTokens": {
+    "in": 16,
+    "out": 3587,
+    "cr": 180975,
+    "cw": 31047
+   },
+   "criticalFailures": []
+  },
+  {
+   "case": "sdd-engineering/negative-retro-not-auto",
+   "runs": 1,
+   "passRate": 1,
+   "medianCostUsd": 0.00208,
+   "medianLatencySec": 4.288,
+   "medianApiCalls": 1,
+   "medianToolCalls": 0,
+   "medianTokens": {
+    "in": 2,
+    "out": 229,
+    "cr": 27565,
+    "cw": 13487
+   },
+   "criticalFailures": []
+  },
+  {
+   "case": "sdd-engineering/negative-unrelated-question",
+   "runs": 1,
+   "passRate": 1,
+   "medianCostUsd": 0.00204,
+   "medianLatencySec": 2.575,
+   "medianApiCalls": 1,
+   "medianToolCalls": 0,
+   "medianTokens": {
+    "in": 2,
+    "out": 149,
+    "cr": 27565,
+    "cw": 13483
+   },
+   "criticalFailures": []
+  },
+  {
+   "case": "sdd-engineering/planner-reads-spec",
+   "runs": 1,
+   "passRate": 0,
+   "medianCostUsd": 0.02327,
+   "medianLatencySec": 110.729,
+   "medianApiCalls": 15,
+   "medianToolCalls": 19,
+   "medianTokens": {
+    "in": 34,
+    "out": 22483,
+    "cr": 520113,
+    "cw": 54586
+   },
+   "criticalFailures": []
+  },
+  {
+   "case": "sdd-engineering/run-plan-implements",
+   "runs": 1,
+   "passRate": 1,
+   "medianCostUsd": 0.0263,
+   "medianLatencySec": 101.041,
+   "medianApiCalls": 22,
+   "medianToolCalls": 40,
+   "medianTokens": {
+    "in": 52,
+    "out": 19116,
+    "cr": 641194,
+    "cw": 82590
+   },
+   "criticalFailures": []
+  },
+  {
+   "case": "sdd-engineering/spec-and-plan",
+   "runs": 1,
+   "passRate": 1,
+   "medianCostUsd": 0.06578,
+   "medianLatencySec": 352.783,
+   "medianApiCalls": 32,
+   "medianToolCalls": 40,
+   "medianTokens": {
+    "in": 74,
+    "out": 73696,
+    "cr": 1291404,
+    "cw": 128091
+   },
+   "criticalFailures": []
+  },
+  {
+   "case": "sdd-engineering/spec-creator-asks",
+   "runs": 1,
+   "passRate": 1,
+   "medianCostUsd": 0.02016,
+   "medianLatencySec": 107.931,
+   "medianApiCalls": 8,
+   "medianToolCalls": 15,
+   "medianTokens": {
+    "in": 20,
+    "out": 23328,
+    "cr": 245133,
+    "cw": 48346
+   },
+   "criticalFailures": []
+  }
+ ],
+ "results": [
+  {
+   "plugin": "architecture-review",
+   "case": "flags-documented-boundary",
+   "tags": [
+    "review"
+   ],
+   "run": 1,
+   "model": "anthropic/claude-haiku-5.5",
+   "pass": true,
+   "score": 1,
+   "criticalFailures": [],
+   "exitCode": 0,
+   "isError": false,
+   "latencySec": 24.278,
+   "apiCalls": 6,
+   "numTurns": 3,
+   "toolCalls": 10,
+   "subagentCalls": 1,
+   "models": [
+    "anthropic/claude-haiku-5.5"
+   ],
+   "tokens": {
+    "in": 14,
+    "out": 4215,
+    "cr": 167693,
+    "cw": 35895
+   },
+   "costUsd": 0.00827,
+   "judgeCostUsd": 0.00131,
+   "graders": [
+    {
+     "grader": "01-reviewer-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/architecture-review:architecture-reviewer/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "02-cites-rule-source.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /ARCHITECTURE\\.md/ in last_message"
+    },
+    {
+     "grader": "03-flags-violation.md",
+     "type": "llm",
+     "weight": 1,
+     "pass": true,
+     "detail": "judge \u2713\u2713 \u2014 The reply reports the src/domain/order.js import from src/infra/db.js as a CRITICAL violation with its file and line, and attributes the MUST NOT rule to ARCHITECTURE.md."
+    },
+    {
+     "grader": "04-read-only.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: "
+    }
+   ]
+  },
+  {
+   "plugin": "research-tools",
+   "case": "answers-repo-question",
+   "tags": [
+    "research"
+   ],
+   "run": 1,
+   "model": "anthropic/claude-haiku-5.5",
+   "pass": true,
+   "score": 1,
+   "criticalFailures": [],
+   "exitCode": 0,
+   "isError": false,
+   "latencySec": 23.079,
+   "apiCalls": 6,
+   "numTurns": 4,
+   "toolCalls": 7,
+   "subagentCalls": 1,
+   "models": [
+    "anthropic/claude-haiku-5.5"
+   ],
+   "tokens": {
+    "in": 16,
+    "out": 3587,
+    "cr": 180975,
+    "cw": 31047
+   },
+   "costUsd": 0.00749,
+   "judgeCostUsd": 0.00131,
+   "graders": [
+    {
+     "grader": "01-researcher-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/research-tools:researcher/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "02-cites-file.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /src/notes\\.js/ in last_message"
+    },
+    {
+     "grader": "03-order-correct.md",
+     "type": "llm",
+     "weight": 1,
+     "pass": true,
+     "detail": "judge \u2713\u2713 \u2014 The content states that listNotes() sorts notes newest first by descending numeric id and cites src/notes.js:17-19 where listNotes is defined, satisfying both criteria."
+    },
+    {
+     "grader": "04-read-only.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: "
+    }
+   ]
+  },
+  {
+   "plugin": "sdd-engineering",
+   "case": "negative-retro-not-auto",
+   "tags": [
+    "negative"
+   ],
+   "run": 1,
+   "model": "anthropic/claude-haiku-5.5",
+   "pass": true,
+   "score": 1,
+   "criticalFailures": [],
+   "exitCode": 0,
+   "isError": false,
+   "latencySec": 4.288,
+   "apiCalls": 1,
+   "numTurns": 1,
+   "toolCalls": 0,
+   "subagentCalls": 0,
+   "models": [
+    "anthropic/claude-haiku-5.5"
+   ],
+   "tokens": {
+    "in": 2,
+    "out": 229,
+    "cr": 27565,
+    "cw": 13487
+   },
+   "costUsd": 0.00208,
+   "judgeCostUsd": 0,
+   "graders": [
+    {
+     "grader": "01-no-retro-skill.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Skill~/workflow-retro/ used 0\u00d7 (min 0, max 0)"
+    },
+    {
+     "grader": "02-no-transcript-scan.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Bash~/workflow-check/ used 0\u00d7 (min 0, max 0)"
+    },
+    {
+     "grader": "03-answers.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /retro|learn|improv/ in last_message"
+    }
+   ]
+  },
+  {
+   "plugin": "sdd-engineering",
+   "case": "negative-unrelated-question",
+   "tags": [
+    "negative"
+   ],
+   "run": 1,
+   "model": "anthropic/claude-haiku-5.5",
+   "pass": true,
+   "score": 1,
+   "criticalFailures": [],
+   "exitCode": 0,
+   "isError": false,
+   "latencySec": 2.575,
+   "apiCalls": 1,
+   "numTurns": 1,
+   "toolCalls": 0,
+   "subagentCalls": 0,
+   "models": [
+    "anthropic/claude-haiku-5.5"
+   ],
+   "tokens": {
+    "in": 2,
+    "out": 149,
+    "cr": 27565,
+    "cw": 13483
+   },
+   "costUsd": 0.00204,
+   "judgeCostUsd": 0,
+   "graders": [
+    {
+     "grader": "01-no-sdd-agent.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent used 0\u00d7 (min 0, max 0)"
+    },
+    {
+     "grader": "02-no-sdd-skill.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Skill~/sdd-engineering/ used 0\u00d7 (min 0, max 0)"
+    },
+    {
+     "grader": "03-answers.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /flat/ in last_message"
+    }
+   ]
+  },
+  {
+   "plugin": "sdd-engineering",
+   "case": "planner-reads-spec",
+   "tags": [
+    "planner"
+   ],
+   "run": 1,
+   "model": "anthropic/claude-haiku-5.5",
+   "pass": false,
+   "score": 0.857,
+   "criticalFailures": [],
+   "exitCode": 0,
+   "isError": false,
+   "latencySec": 110.729,
+   "apiCalls": 15,
+   "numTurns": 9,
+   "toolCalls": 19,
+   "subagentCalls": 1,
+   "models": [
+    "anthropic/claude-haiku-5.5"
+   ],
+   "tokens": {
+    "in": 34,
+    "out": 22483,
+    "cr": 520113,
+    "cw": 54586
+   },
+   "costUsd": 0.02327,
+   "judgeCostUsd": 0.00275,
+   "graders": [
+    {
+     "grader": "01-planner-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/implementation-planner/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "02-spec-read.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Read~/note-pinning/ used 3\u00d7 (min 1)"
+    },
+    {
+     "grader": "03-plan-exists.md",
+     "type": "file_exists",
+     "weight": 1,
+     "pass": true,
+     "detail": "docs/plans/001-note-pinning.plan.md"
+    },
+    {
+     "grader": "04-all-acs-traced.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: "
+    },
+    {
+     "grader": "05-spec-untouched.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: "
+    },
+    {
+     "grader": "06-no-approval-stamp.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "no match /\\*\\*Approved:\\*\\*/ in files:docs/plans/*.plan.md"
+    },
+    {
+     "grader": "07-no-invented-requirements.md",
+     "type": "llm",
+     "weight": 1,
+     "pass": false,
+     "detail": "judge \u2717\u2717 \u2014 The plan adds user-facing behavior beyond the listed requirements: pinning an already-pinned note is a tested no-op (A-1), and unpinning an unpinned note is treated as a no-op in the open questions."
+    }
+   ]
+  },
+  {
+   "plugin": "sdd-engineering",
+   "case": "run-plan-implements",
+   "tags": [
+    "run-plan",
+    "expensive"
+   ],
+   "run": 1,
+   "model": "anthropic/claude-haiku-5.5",
+   "pass": true,
+   "score": 1,
+   "criticalFailures": [],
+   "exitCode": 0,
+   "isError": false,
+   "latencySec": 101.041,
+   "apiCalls": 22,
+   "numTurns": 10,
+   "toolCalls": 40,
+   "subagentCalls": 3,
+   "models": [
+    "anthropic/claude-haiku-5.5"
+   ],
+   "tokens": {
+    "in": 52,
+    "out": 19116,
+    "cr": 641194,
+    "cw": 82590
+   },
+   "costUsd": 0.0263,
+   "judgeCostUsd": 0,
+   "graders": [
+    {
+     "grader": "01-implementer-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/sdd-engineering:implementer/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "02-arch-review-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/architecture-review:architecture-reviewer/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "03-verifier-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/sdd-engineering:plan-verifier/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "04-implement-before-verify.md",
+     "type": "tool_order",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~implementer@5 before Agent~plan-verifier@28"
+    },
+    {
+     "grader": "05-tests-pass.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: \u2139 skipped 0 | \u2139 todo 0 | \u2139 duration_ms 52.92425"
+    },
+    {
+     "grader": "06-pinning-tested.md",
+     "type": "file_exists",
+     "weight": 1,
+     "pass": true,
+     "detail": "test/pinning.test.js"
+    },
+    {
+     "grader": "07-plan-unchanged-by-agents.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: "
+    }
+   ]
+  },
+  {
+   "plugin": "sdd-engineering",
+   "case": "spec-and-plan",
+   "tags": [
+    "scenario",
+    "cost",
+    "spec",
+    "planner"
+   ],
+   "run": 1,
+   "model": "anthropic/claude-haiku-5.5",
+   "pass": true,
+   "score": 1,
+   "criticalFailures": [],
+   "exitCode": 0,
+   "isError": false,
+   "latencySec": 352.783,
+   "apiCalls": 32,
+   "numTurns": 12,
+   "toolCalls": 40,
+   "subagentCalls": 2,
+   "models": [
+    "anthropic/claude-haiku-5.5"
+   ],
+   "tokens": {
+    "in": 74,
+    "out": 73696,
+    "cr": 1291404,
+    "cw": 128091
+   },
+   "costUsd": 0.06578,
+   "judgeCostUsd": 0.00394,
+   "graders": [
+    {
+     "grader": "01-spec-creator-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/sdd-engineering:spec-creator/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "02-planner-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/sdd-engineering:implementation-planner/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "03-spec-before-plan.md",
+     "type": "tool_order",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~spec-creator@3 before Agent~implementation-planner@25"
+    },
+    {
+     "grader": "04-spec-lints.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: PASS specs/note-tags.md \u2014 Status: approved \u00b7 0 errors, 0 warnings \u00b7 US 3 \u00b7 AC 13 \u00b7 EC 8 \u00b7 NF 1 \u00b7 SC 2 \u00b7 open Q 0"
+    },
+    {
+     "grader": "05-plan-exists.md",
+     "type": "file_exists",
+     "weight": 1,
+     "pass": true,
+     "detail": "docs/plans/001-note-tags.plan.md"
+    },
+    {
+     "grader": "06-plan-traces-acs.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /AC-1/ in files:docs/plans/*.plan.md"
+    },
+    {
+     "grader": "07-plan-uses-npm-test.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /npm test|node --test/ in files:docs/plans/*.plan.md"
+    },
+    {
+     "grader": "08-no-code-changed.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: "
+    },
+    {
+     "grader": "09-spec-is-behaviour-only.md",
+     "type": "llm",
+     "weight": 1,
+     "pass": true,
+     "detail": "judge \u2713\u2713 \u2014 The spec's stories cover adding (US-1), listing by tag (US-2) and removing (US-3) tags, the acceptance criteria and stories describe only observable behaviour with no file paths, function names or code, and EC-1 and EC-3 cover empty and non-text tag inputs."
+    },
+    {
+     "grader": "10-plan-follows-spec.md",
+     "type": "llm",
+     "weight": 1,
+     "pass": true,
+     "detail": "judge \u2713\u2713 \u2014 The plan has a Spec traceability table mapping AC-1 through AC-13, EC-1 through EC-8, NF-1 and SC-2 to steps, and it adds only tagging behaviour (add, remove, list by tag) with no persistence, UI, search, sharing or tag renaming."
+    }
+   ]
+  },
+  {
+   "plugin": "sdd-engineering",
+   "case": "spec-creator-asks",
+   "tags": [
+    "spec"
+   ],
+   "run": 1,
+   "model": "anthropic/claude-haiku-5.5",
+   "pass": true,
+   "score": 1,
+   "criticalFailures": [],
+   "exitCode": 0,
+   "isError": false,
+   "latencySec": 107.931,
+   "apiCalls": 8,
+   "numTurns": 2,
+   "toolCalls": 15,
+   "subagentCalls": 1,
+   "models": [
+    "anthropic/claude-haiku-5.5"
+   ],
+   "tokens": {
+    "in": 20,
+    "out": 23328,
+    "cr": 245133,
+    "cw": 48346
+   },
+   "costUsd": 0.02016,
+   "judgeCostUsd": 0.00127,
+   "graders": [
+    {
+     "grader": "01-spec-creator-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/spec-creator/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "02-draft-written.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /Status: draft/ in files:specs/*.md"
+    },
+    {
+     "grader": "03-open-question-marked.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /NEEDS CLARIFICATION/ in files:specs/*.md"
+    },
+    {
+     "grader": "04-questions-relayed.md",
+     "type": "llm",
+     "weight": 1,
+     "pass": true,
+     "detail": "judge \u2713\u2713 \u2014 The content relays four clarifying questions about the export feature (format, destination, subset selection, and included fields) and states that the questions are unanswered, so it does not claim the spec is final or approved."
+    }
+   ]
+  }
+ ]
+}

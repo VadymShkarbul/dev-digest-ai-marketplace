@@ -1,0 +1,346 @@
+{
+ "schema": 1,
+ "ranAt": "2026-10-21T12:31:54.634Z",
+ "commit": "f691f8a",
+ "dirty": false,
+ "model": "anthropic/claude-haiku-5.5",
+ "judgeModel": "anthropic/claude-haiku-5.5",
+ "claudeVersion": "2.1.267 (Claude Code)",
+ "totalCostUsd": 0.1886,
+ "providerSpendUsd": 0.1725,
+ "summary": [
+  {
+   "case": "sdd-engineering/spec-and-plan",
+   "runs": 3,
+   "passRate": 0.6666666666666666,
+   "medianCostUsd": 0.05818,
+   "medianLatencySec": 309.661,
+   "medianApiCalls": 27,
+   "medianToolCalls": 39,
+   "medianTokens": {
+    "in": 64,
+    "out": 65291,
+    "cr": 1104516,
+    "cw": 115885
+   },
+   "criticalFailures": []
+  }
+ ],
+ "results": [
+  {
+   "plugin": "sdd-engineering",
+   "case": "spec-and-plan",
+   "tags": [
+    "scenario",
+    "cost",
+    "spec",
+    "planner"
+   ],
+   "run": 1,
+   "model": "anthropic/claude-haiku-5.5",
+   "pass": true,
+   "score": 1,
+   "criticalFailures": [],
+   "exitCode": 0,
+   "isError": false,
+   "latencySec": 370.526,
+   "apiCalls": 28,
+   "numTurns": 12,
+   "toolCalls": 45,
+   "subagentCalls": 2,
+   "models": [
+    "anthropic/claude-haiku-5.5"
+   ],
+   "tokens": {
+    "in": 66,
+    "out": 79702,
+    "cr": 1261685,
+    "cw": 131749
+   },
+   "costUsd": 0.06894,
+   "judgeCostUsd": 0.00327,
+   "graders": [
+    {
+     "grader": "01-spec-creator-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/sdd-engineering:spec-creator/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "02-planner-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/sdd-engineering:implementation-planner/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "03-spec-before-plan.md",
+     "type": "tool_order",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~spec-creator@3 before Agent~implementation-planner@34"
+    },
+    {
+     "grader": "04-spec-lints.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: PASS specs/note-tags.md \u2014 Status: approved \u00b7 0 errors, 0 warnings \u00b7 US 3 \u00b7 AC 10 \u00b7 EC 8 \u00b7 NF 1 \u00b7 SC 3 \u00b7 open Q 0"
+    },
+    {
+     "grader": "05-plan-exists.md",
+     "type": "file_exists",
+     "weight": 1,
+     "pass": true,
+     "detail": "docs/plans/001-note-tags.plan.md"
+    },
+    {
+     "grader": "06-plan-traces-acs.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /AC-1/ in files:docs/plans/*.plan.md"
+    },
+    {
+     "grader": "07-plan-uses-npm-test.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /npm test|node --test/ in files:docs/plans/*.plan.md"
+    },
+    {
+     "grader": "08-no-code-changed.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: "
+    },
+    {
+     "grader": "09-spec-is-behaviour-only.md",
+     "type": "llm",
+     "weight": 1,
+     "pass": true,
+     "detail": "judge \u2713\u2713 \u2014 The stories cover adding (US-1), listing (US-2) and removing (US-3) tags; the acceptance criteria and stories describe only behaviour with no file paths, function names or code; and EC-3, EC-4 and EC-5 cover invalid or missing input."
+    },
+    {
+     "grader": "10-plan-follows-spec.md",
+     "type": "llm",
+     "weight": 1,
+     "pass": true,
+     "detail": "judge \u2713\u2713 \u2014 The plan's Spec traceability table maps every AC-1 to AC-10 to plan steps, and the added functionality is limited to tagging notes (add, remove, list by tag, in-memory only), with persistence, UI, search, sharing and renaming explicitly excluded."
+    }
+   ]
+  },
+  {
+   "plugin": "sdd-engineering",
+   "case": "spec-and-plan",
+   "tags": [
+    "scenario",
+    "cost",
+    "spec",
+    "planner"
+   ],
+   "run": 2,
+   "model": "anthropic/claude-haiku-5.5",
+   "pass": false,
+   "score": 0.9,
+   "criticalFailures": [],
+   "exitCode": 0,
+   "isError": false,
+   "latencySec": 270.977,
+   "apiCalls": 24,
+   "numTurns": 13,
+   "toolCalls": 34,
+   "subagentCalls": 2,
+   "models": [
+    "anthropic/claude-haiku-5.5"
+   ],
+   "tokens": {
+    "in": 58,
+    "out": 56285,
+    "cr": 964309,
+    "cw": 108936
+   },
+   "costUsd": 0.05141,
+   "judgeCostUsd": 0.00299,
+   "graders": [
+    {
+     "grader": "01-spec-creator-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/sdd-engineering:spec-creator/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "02-planner-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/sdd-engineering:implementation-planner/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "03-spec-before-plan.md",
+     "type": "tool_order",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~spec-creator@3 before Agent~implementation-planner@22"
+    },
+    {
+     "grader": "04-spec-lints.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: PASS specs/note-tags.md \u2014 Status: approved \u00b7 0 errors, 0 warnings \u00b7 US 3 \u00b7 AC 11 \u00b7 EC 7 \u00b7 NF 0 \u00b7 SC 3 \u00b7 open Q 0"
+    },
+    {
+     "grader": "05-plan-exists.md",
+     "type": "file_exists",
+     "weight": 1,
+     "pass": true,
+     "detail": "docs/plans/001-note-tags.plan.md"
+    },
+    {
+     "grader": "06-plan-traces-acs.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /AC-1/ in files:docs/plans/*.plan.md"
+    },
+    {
+     "grader": "07-plan-uses-npm-test.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /npm test|node --test/ in files:docs/plans/*.plan.md"
+    },
+    {
+     "grader": "08-no-code-changed.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: "
+    },
+    {
+     "grader": "09-spec-is-behaviour-only.md",
+     "type": "llm",
+     "weight": 1,
+     "pass": false,
+     "detail": "judge \u2717\u2717 \u2014 Criterion (2) fails because the acceptance criteria and edge cases name code-level identifiers, such as the 'notes library' and the 'notes test suite', and the 'Packages' and '[repo]' references point to repo structure, though the strongest concern is that the spec does not clearly keep to behaviour-only wording; criteria (1) and (3) are satisfied by US-1/US-2 and EC-1/EC-2/EC-4/EC-6/EC-7."
+    },
+    {
+     "grader": "10-plan-follows-spec.md",
+     "type": "llm",
+     "weight": 1,
+     "pass": true,
+     "detail": "judge \u2713\u2713 \u2014 The plan includes a Spec traceability table mapping every AC-n (AC-1 through AC-11) to plan steps and tests, and the feature scope is limited to tagging notes with add/remove/list-by-tag, with persistence, UI, search, sharing, and tag renaming explicitly excluded."
+    }
+   ]
+  },
+  {
+   "plugin": "sdd-engineering",
+   "case": "spec-and-plan",
+   "tags": [
+    "scenario",
+    "cost",
+    "spec",
+    "planner"
+   ],
+   "run": 3,
+   "model": "anthropic/claude-haiku-5.5",
+   "pass": true,
+   "score": 1,
+   "criticalFailures": [],
+   "exitCode": 0,
+   "isError": false,
+   "latencySec": 309.661,
+   "apiCalls": 27,
+   "numTurns": 13,
+   "toolCalls": 39,
+   "subagentCalls": 2,
+   "models": [
+    "anthropic/claude-haiku-5.5"
+   ],
+   "tokens": {
+    "in": 64,
+    "out": 65291,
+    "cr": 1104516,
+    "cw": 115885
+   },
+   "costUsd": 0.05818,
+   "judgeCostUsd": 0.00383,
+   "graders": [
+    {
+     "grader": "01-spec-creator-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/sdd-engineering:spec-creator/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "02-planner-used.md",
+     "type": "tool_used",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~/sdd-engineering:implementation-planner/ used 1\u00d7 (min 1)"
+    },
+    {
+     "grader": "03-spec-before-plan.md",
+     "type": "tool_order",
+     "weight": 1,
+     "pass": true,
+     "detail": "Agent~spec-creator@4 before Agent~implementation-planner@28"
+    },
+    {
+     "grader": "04-spec-lints.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: PASS specs/note-tags.md \u2014 Status: approved \u00b7 0 errors, 0 warnings \u00b7 US 3 \u00b7 AC 12 \u00b7 EC 5 \u00b7 NF 0 \u00b7 SC 2 \u00b7 open Q 0"
+    },
+    {
+     "grader": "05-plan-exists.md",
+     "type": "file_exists",
+     "weight": 1,
+     "pass": true,
+     "detail": "docs/plans/001-note-tags.plan.md"
+    },
+    {
+     "grader": "06-plan-traces-acs.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /AC-1/ in files:docs/plans/*.plan.md"
+    },
+    {
+     "grader": "07-plan-uses-npm-test.md",
+     "type": "regex",
+     "weight": 1,
+     "pass": true,
+     "detail": "matched /npm test|node --test/ in files:docs/plans/*.plan.md"
+    },
+    {
+     "grader": "08-no-code-changed.md",
+     "type": "command",
+     "weight": 1,
+     "pass": true,
+     "detail": "exit 0: "
+    },
+    {
+     "grader": "09-spec-is-behaviour-only.md",
+     "type": "llm",
+     "weight": 1,
+     "pass": true,
+     "detail": "judge \u2713\u2717\u2713 \u2014 The stories cover adding, removing, and listing notes by tag (US-1 to US-3), the acceptance criteria and stories describe only observable behaviour with no file paths, function names, or code, and EC-1 to EC-3 cover invalid or missing input (empty tag, over-long tag, unknown note)."
+    },
+    {
+     "grader": "10-plan-follows-spec.md",
+     "type": "llm",
+     "weight": 1,
+     "pass": true,
+     "detail": "judge \u2713\u2713 \u2014 The plan's Spec traceability table maps every AC-1 to AC-12 and EC-1 to EC-5 to plan steps, and the only added behaviour is tagging plus listing notes by tag, which the spec requests, with no persistence, UI, search beyond that tag listing, sharing or tag renaming."
+    }
+   ]
+  }
+ ]
+}
