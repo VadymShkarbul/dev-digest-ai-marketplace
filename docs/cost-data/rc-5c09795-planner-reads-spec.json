@@ -1,0 +1,112 @@
+{
+  "schema": 1,
+  "ranAt": "2026-10-21T12:47:43.926Z",
+  "commit": "5c09795",
+  "dirty": false,
+  "model": "anthropic/claude-haiku-5.5",
+  "judgeModel": "anthropic/claude-haiku-5.5",
+  "claudeVersion": "2.1.267 (Claude Code)",
+  "totalCostUsd": 0.0193,
+  "providerSpendUsd": 0.0055,
+  "summary": [
+    {
+      "case": "sdd-engineering/planner-reads-spec",
+      "runs": 1,
+      "passRate": 1,
+      "medianCostUsd": 0.01671,
+      "medianLatencySec": 86.98,
+      "medianApiCalls": 7,
+      "medianToolCalls": 11,
+      "medianTokens": {
+        "in": 16,
+        "out": 18626,
+        "cr": 202238,
+        "cw": 42976
+      },
+      "criticalFailures": []
+    }
+  ],
+  "results": [
+    {
+      "plugin": "sdd-engineering",
+      "case": "planner-reads-spec",
+      "tags": [
+        "planner"
+      ],
+      "run": 1,
+      "model": "anthropic/claude-haiku-5.5",
+      "pass": true,
+      "score": 1,
+      "criticalFailures": [],
+      "exitCode": 0,
+      "isError": false,
+      "latencySec": 86.98,
+      "apiCalls": 7,
+      "numTurns": 3,
+      "toolCalls": 11,
+      "subagentCalls": 1,
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens": {
+        "in": 16,
+        "out": 18626,
+        "cr": 202238,
+        "cw": 42976
+      },
+      "costUsd": 0.01671,
+      "judgeCostUsd": 0.0026,
+      "graders": [
+        {
+          "grader": "01-planner-used.md",
+          "type": "tool_used",
+          "weight": 1,
+          "pass": true,
+          "detail": "Agent~/implementation-planner/ used 1× (min 1)"
+        },
+        {
+          "grader": "02-spec-read.md",
+          "type": "tool_used",
+          "weight": 1,
+          "pass": true,
+          "detail": "Read~/note-pinning/ used 1× (min 1)"
+        },
+        {
+          "grader": "03-plan-exists.md",
+          "type": "file_exists",
+          "weight": 1,
+          "pass": true,
+          "detail": "docs/plans/001-note-pinning.plan.md"
+        },
+        {
+          "grader": "04-all-acs-traced.md",
+          "type": "command",
+          "weight": 1,
+          "pass": true,
+          "detail": "exit 0: "
+        },
+        {
+          "grader": "05-spec-untouched.md",
+          "type": "command",
+          "weight": 1,
+          "pass": true,
+          "detail": "exit 0: "
+        },
+        {
+          "grader": "06-no-approval-stamp.md",
+          "type": "regex",
+          "weight": 1,
+          "pass": true,
+          "detail": "no match /\\*\\*Approved:\\*\\*/ in files:docs/plans/*.plan.md"
+        },
+        {
+          "grader": "07-no-invented-requirements.md",
+          "type": "llm",
+          "weight": 1,
+          "pass": true,
+          "detail": "judge ✓✓ — The plan implements all required items (pinned flag, pin/unpin, pinned-first newest-first listing, new notes unpinned, 'note not found' error, A-1 no-op) and its extra behaviours are recorded only as assumptions or open questions, not as new requirements."
+        }
+      ]
+    }
+  ]
+}
