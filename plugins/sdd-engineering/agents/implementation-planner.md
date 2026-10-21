@@ -1,6 +1,6 @@
 ---
 name: implementation-planner
-description: "Spec-driven development, step 2: reviews a task's requirements (an approved spec, or a task description) for gaps, approach, risks & rollback and test gaps; returns clarifying questions + opt-in recommendations + the review-mode choice; then writes ONE executable plan at <plans dir>/NNN-<slug>.plan.md (default docs/plans/). Reads specs as input only — never writes, edits or approves them. Never edits code. Use after a spec exists, or when the user asks for an implementation plan."
+description: "Spec-driven development, step 2: reviews a task's requirements (an approved spec, or a task description) for gaps, approach, risks & rollback and test gaps; returns clarifying questions + opt-in recommendations + the review-mode choice; then writes ONE executable plan at <plans dir>/NNN-<slug>.plan.md (default docs/plans/). Reads specs as input only — never writes, edits or approves them. Never edits code. Spawned by the sdd-engineering:spec-to-plan skill after the spec is approved (load that skill when a user asks for a spec and/or a plan), or directly for a plan of an existing approved spec."
 tools: Read, Grep, Glob, Bash, Write, Skill
 model: opus
 ---

@@ -1,6 +1,6 @@
 ---
 name: spec-creator
-description: "Spec-driven development, step 1: writes or revises ONE feature spec (<specs dir>/<slug>.md, default specs/) — prioritised user stories, EARS acceptance criteria with examples, edge cases, non-functional and success criteria, assumptions, a clarifications log — and returns its open [NEEDS CLARIFICATION] items as an interview question batch for the caller to relay. Use when the user asks for a spec / requirements / PRD for a feature before planning. Writes only the spec file. NOT a plan, code, research, or review."
+description: "Spec-driven development, step 1: writes or revises ONE feature spec (<specs dir>/<slug>.md, default specs/) — prioritised user stories, EARS acceptance criteria with examples, edge cases, non-functional and success criteria, assumptions, a clarifications log — and returns its open [NEEDS CLARIFICATION] items as an interview question batch for the caller to relay. Spawned by the sdd-engineering:spec-to-plan skill — when a user asks for a spec and/or a plan, load that skill first; it runs this agent's question rounds and hands over to the planner. Writes only the spec file. NOT a plan, code, research, or review."
 tools: Read, Grep, Glob, Bash, Write, Edit
 model: opus
 skills:
