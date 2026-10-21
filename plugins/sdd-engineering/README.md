@@ -24,7 +24,8 @@ you ─► sdd-engineering:spec-creator ──questions──► you ──answe
 | `implementation-planner` | agent | reviews requirements, asks questions, writes ONE plan |
 | `implementer` | agent | executes an **approved** plan, runs its gates, reports |
 | `plan-verifier` | agent | read-only item-by-item conformance check → `PASS`/`INCOMPLETE` |
-| `spec-writing` | skill | template, EARS rules, references; `spec-lint.mjs`, `spec-admin.mjs` (preloaded into spec-creator) |
+| `spec-to-plan` | skill (auto) | entry point: runs spec-creator rounds, the human approval, then the planner |
+| `spec-writing` | skill (reference) | template, EARS rules, references; `spec-lint.mjs`, `spec-admin.mjs` (preloaded into spec-creator) |
 | `run-plan` | skill (`/sdd-engineering:run-plan`, manual) | orchestrates implement → gates → review → fix loop |
 | `workflow-retro` | skill (`/sdd-engineering:workflow-retro`, manual) | measures a run from Claude Code transcripts, proposes learnings |
 | `engineering-insights` | skill | appends verified insights to a module's `INSIGHTS.md` |
@@ -40,9 +41,10 @@ implementer loads by name), `research-tools` (delegated discovery), `architectur
 > I want a spec and a plan for <feature>.
 ```
 
-The main session delegates to `sdd-engineering:spec-creator`, relays its questions to you,
-and sends your answers back (up to 3 rounds). Approve the spec, then ask for the plan;
-`sdd-engineering:implementation-planner` asks its questions and writes the plan. Run it
+The `spec-to-plan` skill takes it from there: it delegates to `sdd-engineering:spec-creator`,
+relays its questions to you and sends your answers back (up to 3 rounds), asks you to
+approve the spec, then runs `sdd-engineering:implementation-planner`, which asks its own
+questions and writes the plan. Run it
 with `/sdd-engineering:run-plan docs/plans/001-<slug>.plan.md`.
 
 ## Where the workflow reads and writes

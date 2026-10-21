@@ -10,4 +10,7 @@
 Dependencies: `engineering-paved-path@^1.0.0`, `research-tools@^1.0.0`,
 `architecture-review@^1.0.0`.
 
+Headless runs (`claude -p`, CI): set `CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1` so subagents
+run in the foreground and the session waits for their reports.
+
 Not supported: running the agents outside a git repository (gates and diffs need one).

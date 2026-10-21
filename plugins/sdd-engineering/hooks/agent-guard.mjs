@@ -68,9 +68,13 @@ function checkWrite() {
   const raw = input?.tool_input?.file_path ?? input?.tool_input?.notebook_path;
   if (typeof raw !== 'string' || raw === '') block(agent, 'no file_path in tool input');
   const abs = path.resolve(root, raw);
-  if (SCRATCH.test(abs)) return;
   const rel = path.relative(root, abs).split(path.sep).join('/');
-  if (rel.startsWith('..') || path.isAbsolute(rel)) block(agent, `${abs} is outside the repository`);
+  if (rel.startsWith('..') || path.isAbsolute(rel)) {
+    // Scratch space outside the project is fine; a project that itself lives under $TMPDIR
+    // still gets its write scope (hence the check after the inside-root test).
+    if (SCRATCH.test(abs)) return;
+    block(agent, `${abs} is outside the repository`);
+  }
   for (const [re, why] of DENY_ALWAYS) if (re.test(rel)) block(agent, `${rel}: ${why}`);
 
   if (agent === 'implementer') {

@@ -6,4 +6,4 @@ runs: 1
 max_turns: 20
 timeout_seconds: 600
 ---
-Can you investigate how the list of notes is ordered in this codebase, and where that happens? I need evidence, not a guess.
+Have a research agent investigate how the list of notes is ordered in this codebase and where that happens, and give me its findings. I need evidence, not a guess.

@@ -1,6 +1,7 @@
 ---
 name: spec-writing
 description: "Reference for writing sdd-engineering feature specs: the spec template, EARS patterns with good/bad pairs, weak-word list, ID and status rules, the spec linter and the human-only approval script, plus on-demand references (sweep profiles, LLM features, a11y, UX copy, requirement-quality checklist). Preloaded into sdd-engineering:spec-creator; read it when writing, reviewing or approving a spec."
+user-invocable: false
 ---
 
 # Writing an sdd-engineering spec

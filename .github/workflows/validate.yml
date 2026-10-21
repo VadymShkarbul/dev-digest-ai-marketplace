@@ -1,0 +1,38 @@
+name: validate
+
+# Every PR: manifests, catalog index checks (names/versions/deps/secrets/paths), guard-hook
+# unit tests, and the site build. Model-backed behaviour evals are run by authors locally
+# (scripts/eval-runner.mjs) and pasted into the PR — they cost tokens.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - name: Install Claude Code (validator only — no API key needed)
+        run: npm install -g @anthropic-ai/claude-code@2.1.267
+      - name: Validate marketplace and every plugin
+        run: |
+          claude plugin validate .
+          for p in plugins/*/; do claude plugin validate "$p"; done
+      - name: Catalog index checks
+        run: node scripts/build-index.mjs --check
+      - name: Script and hook tests
+        run: node --test scripts/tests/*.test.mjs
+      - name: Build index + site
+        run: |
+          node scripts/build-index.mjs
+          cd site && npm ci && npm run build

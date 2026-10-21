@@ -2,4 +2,4 @@
 type: llm
 target: "files:docs/plans/*.plan.md"
 ---
-PASS only if ALL hold: (1) every requirement in the plan traces to the spec (a Spec traceability table maps AC ids to steps); (2) the plan does not add features beyond tagging notes (no persistence, UI, search or sharing); (3) steps name concrete files under src/ and test/; (4) the verification gates use npm test.
+Judge only these two points. PASS only if BOTH hold: (1) the plan has a Spec traceability table that maps the spec's acceptance-criterion ids (AC-n) to plan steps; (2) the plan adds no feature beyond tagging notes — no persistence, UI, search, sharing or tag renaming that the spec did not ask for. Ignore formatting, file naming and which test command is used (other graders check those).
