@@ -10,7 +10,7 @@ different owners and release cadences.
 | [`engineering-paved-path`](plugins/engineering-paved-path) | 1.0.0 | 11 technical skills (React, RTL, Next.js, Fastify, frontend architecture, Drizzle, PostgreSQL, Zod, TypeScript, security, Mermaid) | — |
 | [`research-tools`](plugins/research-tools) | 1.0.0 | `researcher` — read-only repo / external-docs investigator | — |
 | [`architecture-review`](plugins/architecture-review) | 1.0.0 | `architecture-reviewer` — reviews a diff against the repo's *own* documented boundaries | `engineering-paved-path@^1.0.0` |
-| [`sdd-engineering`](plugins/sdd-engineering) | 1.0.0 | spec-driven development: spec → plan → implement → review → retro | all three above |
+| [`sdd-engineering`](plugins/sdd-engineering) | 1.1.0 | spec-driven development: spec → plan → implement → review → retro | all three above |
 
 ```
 sdd-engineering
@@ -47,7 +47,7 @@ cd site && npm ci && npm run build && npm run preview
 | Path | What |
 | --- | --- |
 | `.claude-plugin/marketplace.json` | the catalog (`latest` channel) |
-| `channels/stable/` | the `stable` channel catalog, pinned to release tags |
+| `channels/stable/` · branch `stable` | the `stable` channel catalog, pinned to release tags (currently all 1.0.0) |
 | `plugins/<name>/` | plugin sources (manifest, skills, agents, hooks, evals, docs) |
 | `scripts/build-index.mjs` | catalog index + repository checks (`--check` in CI) |
 | `scripts/eval-runner.mjs` | behaviour evals + cost metrics via `claude -p` |

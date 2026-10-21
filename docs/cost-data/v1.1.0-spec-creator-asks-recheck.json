@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "ranAt": "2026-10-21T13:27:55.952Z",
+  "commit": "2797b03",
+  "dirty": true,
+  "model": "anthropic/claude-haiku-5.5",
+  "judgeModel": "anthropic/claude-haiku-5.5",
+  "claudeVersion": "2.1.267 (Claude Code)",
+  "totalCostUsd": 0.0168,
+  "providerSpendUsd": 0.0251,
+  "summary": [
+    {
+      "case": "sdd-engineering/spec-creator-asks",
+      "runs": 1,
+      "passRate": 1,
+      "medianCostUsd": 0.01532,
+      "medianLatencySec": 79.35,
+      "medianApiCalls": 9,
+      "medianToolCalls": 14,
+      "medianTokens": {
+        "in": 22,
+        "out": 15674,
+        "cr": 233071,
+        "cw": 41222
+      },
+      "criticalFailures": []
+    }
+  ],
+  "results": [
+    {
+      "plugin": "sdd-engineering",
+      "case": "spec-creator-asks",
+      "tags": [
+        "spec"
+      ],
+      "run": 1,
+      "model": "anthropic/claude-haiku-5.5",
+      "pass": true,
+      "score": 1,
+      "criticalFailures": [],
+      "exitCode": 0,
+      "isError": false,
+      "latencySec": 79.35,
+      "apiCalls": 9,
+      "numTurns": 2,
+      "toolCalls": 14,
+      "subagentCalls": 1,
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens": {
+        "in": 22,
+        "out": 15674,
+        "cr": 233071,
+        "cw": 41222
+      },
+      "costUsd": 0.01532,
+      "judgeCostUsd": 0.00144,
+      "graders": [
+        {
+          "grader": "01-spec-creator-used.md",
+          "type": "tool_used",
+          "weight": 1,
+          "pass": true,
+          "detail": "Agent~/spec-creator/ used 1× (min 1)"
+        },
+        {
+          "grader": "02-draft-written.md",
+          "type": "regex",
+          "weight": 1,
+          "pass": true,
+          "detail": "matched /Status: draft/ in files:specs/*.md"
+        },
+        {
+          "grader": "03-open-question-marked.md",
+          "type": "regex",
+          "weight": 1,
+          "pass": true,
+          "detail": "matched /NEEDS CLARIFICATION/ in files:specs/*.md"
+        },
+        {
+          "grader": "04-questions-relayed.md",
+          "type": "llm",
+          "weight": 1,
+          "pass": true,
+          "detail": "judge ✓✓ — The reply relays several clarifying questions about the export feature (format, single-note scope, output destination, identifiers, import) and explicitly leaves them unanswered without claiming the spec is final or approved."
+        }
+      ]
+    }
+  ]
+}

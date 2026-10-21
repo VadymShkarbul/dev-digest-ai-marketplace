@@ -141,6 +141,14 @@ export function lint(text, { strict = false } = {}) {
 
   for (const s of scs) if (VAGUE_ERR.test(stripQuoted(s.text))) warn(s.line, `${s.id}: vague success criterion`);
 
+  // 1.1.0: every mandatory requirement (a P1 or P2 story) needs at least one acceptance
+  // criterion citing it — a spec with an uncovered mandatory story is not finished.
+  const cited = new Set(acs.flatMap((a) => a.refs.filter((r) => /^US-\d+$/.test(r))));
+  for (const s of stories) {
+    const pri = /\((P[123])\)/.exec(s.raw)?.[1];
+    if ((pri === 'P1' || pri === 'P2') && !cited.has(s.id)) err(s.line, `${s.id} (${pri}) is a mandatory requirement with no acceptance criterion — add an AC citing (${s.id})`);
+  }
+
   // Clarification markers vs open questions.
   const markers = [...clean.matchAll(/\[NEEDS CLARIFICATION: (Q-\d+)/g)].map((m) => m[1]);
   const openQs = secs.has('Needs clarification') ? items(secs.get('Needs clarification').body, secs.get('Needs clarification').line, 'Q') : [];

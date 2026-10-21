@@ -10,9 +10,10 @@
 #   gates.md       one row per command found under the plan's "## Verification gates"
 #   logs/NN.log    full output of each gate command
 #
-# Gate commands are the backticked commands on the numbered lines of the plan's
-# "## Verification gates" section. A line that says NOT FOUND is recorded as
-# "not run — no command", never as a pass. Runs offline; exit 0 even when a gate fails
+# Gate commands are the backticked commands that OPEN a numbered line of the plan's
+# "## Verification gates" section ("1. `pnpm test` — …"). A line without a leading
+# backticked command (prose, an expected-output note) or one that says NOT FOUND is
+# recorded as "not run — no command", never as a pass and never executed. Runs offline; exit 0 even when a gate fails
 # (the verdict is in gates.md), 2 on usage errors.
 
 set -uo pipefail
@@ -56,7 +57,7 @@ n=0
 while IFS= read -r line; do
   case "$line" in [0-9]*.*) ;; *) continue ;; esac
   n=$((n + 1))
-  cmd="$(printf '%s' "$line" | sed -n 's/^[^`]*`\([^`]*\)`.*/\1/p')"
+  cmd="$(printf '%s' "$line" | sed -n 's/^[0-9][0-9]*\.[[:space:]]*`\([^`]*\)`.*/\1/p')"
   if [ -z "$cmd" ] || printf '%s' "$line" | grep -q 'NOT FOUND'; then
     printf '| %d | — | — | not run — no command (%s) |\n' "$n" "$(printf '%s' "$line" | cut -c1-80)" >> "$ART/gates.md"
     echo "gate $n: not run — no command"

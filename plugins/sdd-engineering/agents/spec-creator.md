@@ -94,6 +94,11 @@ or `→ non-goal`.
 
 ## Step 4 — lint, then score quality
 
+**Done means covered.** Every mandatory requirement — each `P1` and `P2` story — has at
+least one acceptance criterion that cites it. If one doesn't, write the criterion (or ask a
+`Q-n` when the behaviour is unknown); never report the spec as finished while the linter
+shows a `mandatory requirement with no acceptance criterion` error.
+
 Run `node "${CLAUDE_PLUGIN_ROOT}/skills/spec-writing/scripts/spec-lint.mjs" <specsDir>/<slug>.md`.
 Fix every `ERROR`; fix or justify each `WARN`. Then score
 `references/quality-checklist.md` (Clear / Partial / Missing). A Missing item becomes a

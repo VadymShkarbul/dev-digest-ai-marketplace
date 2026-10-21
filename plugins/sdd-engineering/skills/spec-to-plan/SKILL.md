@@ -1,6 +1,6 @@
 ---
 name: spec-to-plan
-description: "Use FIRST whenever the user asks to prepare or write a spec, requirements or a PRD for a feature, and/or an implementation plan — entry point of the spec-driven workflow. Orchestrates sdd-engineering:spec-creator (question rounds, lint, human approval) and then sdd-engineering:implementation-planner (requirements review, plan file). Ends with a plan ready for /sdd-engineering:run-plan. Not for questions about existing code, bug fixes, or implementing anything."
+description: "Use FIRST whenever the user asks to prepare, write, finish or revise a spec, requirements or a PRD for a feature, and/or an implementation plan — entry point of the spec-driven workflow. Orchestrates sdd-engineering:spec-creator (question rounds, lint, human approval) and then sdd-engineering:implementation-planner (requirements review, plan file). Ends with a plan ready for /sdd-engineering:run-plan. Not for questions about existing code, bug fixes, or implementing anything."
 allowed-tools: Read Glob Grep AskUserQuestion SendMessage Bash(node ${CLAUDE_SKILL_DIR}/../spec-writing/scripts/spec-lint.mjs:*) Bash(node ${CLAUDE_SKILL_DIR}/../spec-writing/scripts/spec-admin.mjs:*) Bash(node ${CLAUDE_SKILL_DIR}/../run-plan/scripts/plan-admin.mjs show:*) Bash(git status:*) Bash(git branch:*) Bash(ls:*)
 ---
 

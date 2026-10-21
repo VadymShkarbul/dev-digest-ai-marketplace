@@ -87,4 +87,26 @@ Critical errors observed across the whole experiment (all fixed before A/B): ses
 skipped the `spec-to-plan` skill (routing), session asked questions in text when headless,
 eval case put the user's approval in the system prompt.
 
+## Releases
+
+| Tag | Commit | CI (`validate`) | Evals on that commit | Notes |
+| --- | --- | --- | --- | --- |
+| `engineering-paved-path--v1.0.0` · `research-tools--v1.0.0` · `architecture-review--v1.0.0` · `sdd-engineering--v1.0.0` | `a3a9250` | ✅ run 39602502514 | A/B series above (B = this content) + B eval set 7/8 (judge-only miss, grader fixed) + `planner-reads-spec` re-run ✅ (`docs/cost-data/rc-5c09795-planner-reads-spec.json`) | dependencies tagged first, consumer last; all four tags → the CI-validated commit |
+| `sdd-engineering--v1.1.0` | see below | see below | new case `spec-requires-ac`: **1.0.0 ✗** (spec-creator bypassed; `spec-admin approve` accepted the uncovered draft — `docs/cost-data/v1.0.0-spec-requires-ac.json`) → **1.1.0 ✓** all 6 graders (`v1.1.0-spec-requires-ac.json`); old cases on 1.1.0: 8/8 ✅ (`v1.1.0-suite.json`); spec-creator re-check after the routing preamble ✅ | only the consumer is released — dependencies unchanged (`^1.0.0` still resolves to `…--v1.0.0`) |
+
+### 1.0.0 in another project (`pastry-recipe-app`, Expo + Supabase, own `AGENTS.md`, `pnpm` gates)
+
+| Check | Evidence |
+| --- | --- |
+| no local SDD components before install | `.claude/` absent; no `spec-creator`/`run-plan` files |
+| install from GitHub, project scope | `marketplace add VadymShkarbul/dev-digest-ai-marketplace --scope project` → `install sdd-engineering@… --scope project` → "+ 3 dependencies"; `plugin list --json`: four plugins enabled, `1.0.0` / `1.0.0-a3a92506cb31`, no `errorDetails` |
+| supporting files in the cache | scripts, references, hooks, `pricing.json`, split RTL references present under `~/.claude/plugins/cache/dev-digest-ai-marketplace/…/1.0.0/`; `spec-lint.mjs`, `workflow-check.mjs` run from there |
+| spec → plan | `spec-to-plan` → `spec-creator` → strict lint → `spec-admin approve` → `implementation-planner`: `specs/oven-temperature-units.md`, `docs/plans/001-oven-temperature-units.plan.md` (gates discovered: `pnpm typecheck`, `pnpm test`, `pnpm lint`, scoped `prettier`) |
+| run-plan + review gate | `implementer` → `architecture-review:architecture-reviewer` (no violations) → `plan-verifier` INCOMPLETE → fix round → `plan-verifier` PASS; 119 tests green; spec → `implemented` |
+| researcher available | listed in the session's agents (`research-tools:researcher`); `spec-to-plan` skipped it because the scope was clear from the code |
+| workflow-retro manual | `/sdd-engineering:workflow-retro --session a637f2e4` ran `workflow-check.mjs` from the cache via `${CLAUDE_SKILL_DIR}`, appended `.sdd/ledger.md` row 1 |
+| trace shows plugin/version | stream `system:init` → `plugins: [{name: sdd-engineering, version: 1.0.0, source: sdd-engineering@dev-digest-ai-marketplace}, {engineering-paved-path 1.0.0 …}, …]` |
+| project instructions kept | the spec-creator read the project's own docs and surfaced its backlog conflict (BL-031); no plugin `CLAUDE.md`, nothing in `AGENTS.md` changed |
+| found a plugin bug | `capture-gates.sh` executed a backticked *note* on gate line 5 (rc 127) → fixed in 1.1.0 |
+
 <!-- RESULTS -->

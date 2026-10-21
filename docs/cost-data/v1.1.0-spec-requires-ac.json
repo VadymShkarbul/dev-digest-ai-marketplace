@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "ranAt": "2026-10-21T13:26:07.412Z",
+  "commit": "2797b03",
+  "dirty": true,
+  "model": "anthropic/claude-haiku-5.5",
+  "judgeModel": "anthropic/claude-haiku-5.5",
+  "claudeVersion": "2.1.267 (Claude Code)",
+  "totalCostUsd": 0.0274,
+  "providerSpendUsd": 0.0081,
+  "summary": [
+    {
+      "case": "sdd-engineering/spec-requires-ac",
+      "runs": 1,
+      "passRate": 1,
+      "medianCostUsd": 0.02558,
+      "medianLatencySec": 141.823,
+      "medianApiCalls": 10,
+      "medianToolCalls": 18,
+      "medianTokens": {
+        "in": 24,
+        "out": 28812,
+        "cr": 355804,
+        "cw": 60900
+      },
+      "criticalFailures": []
+    }
+  ],
+  "results": [
+    {
+      "plugin": "sdd-engineering",
+      "case": "spec-requires-ac",
+      "tags": [
+        "spec",
+        "v1.1.0"
+      ],
+      "run": 1,
+      "model": "anthropic/claude-haiku-5.5",
+      "pass": true,
+      "score": 1,
+      "criticalFailures": [],
+      "exitCode": 0,
+      "isError": false,
+      "latencySec": 141.823,
+      "apiCalls": 10,
+      "numTurns": 9,
+      "toolCalls": 18,
+      "subagentCalls": 1,
+      "models": [
+        "anthropic/claude-haiku-5.5"
+      ],
+      "tokens": {
+        "in": 24,
+        "out": 28812,
+        "cr": 355804,
+        "cw": 60900
+      },
+      "costUsd": 0.02558,
+      "judgeCostUsd": 0.00184,
+      "graders": [
+        {
+          "grader": "01-spec-creator-used.md",
+          "type": "tool_used",
+          "weight": 1,
+          "pass": true,
+          "detail": "Agent~/sdd-engineering:spec-creator/ used 1× (min 1)"
+        },
+        {
+          "grader": "02-us2-covered.md",
+          "type": "command",
+          "weight": 1,
+          "pass": true,
+          "detail": "exit 0: "
+        },
+        {
+          "grader": "03-lints-under-coverage-rule.md",
+          "type": "command",
+          "weight": 1,
+          "pass": true,
+          "detail": "exit 0: PASS specs/note-colours.md — Status: draft · 0 errors, 0 warnings · US 2 · AC 3 · EC 3 · NF 0 · SC 2 · open Q 2"
+        },
+        {
+          "grader": "04-no-plan-or-code.md",
+          "type": "command",
+          "weight": 1,
+          "pass": true,
+          "detail": "exit 0: "
+        },
+        {
+          "grader": "05-listing-ac-is-behaviour.md",
+          "type": "llm",
+          "weight": 1,
+          "pass": true,
+          "detail": "judge ✓✓ — AC-3 is tagged US-2 and is a single EARS sentence with SHALL requiring that listing notes for a palette colour returns exactly the notes holding that colour."
+        },
+        {
+          "grader": "06-approval-refused-without-ac.md",
+          "type": "command",
+          "weight": 1,
+          "pass": true,
+          "detail": "exit 0: spec-admin: strict lint failed — 1 error(s): |   24: US-2 (P1) is a mandatory requirement with no acceptance criterion — add an AC citing (US-2)"
+        }
+      ],
+      "workspace": "/var/folders/g3/943hrnw94b7f640xxpwkx29r0000gn/T/sdd-eval-spec-requires-ac-FjdqUp"
+    }
+  ]
+}

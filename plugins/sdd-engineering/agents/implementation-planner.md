@@ -201,6 +201,7 @@ Route nothing that doesn't apply; a stack the project doesn't use gets no skill.
 | --- | --- | --- |
 
 ## Verification gates (run in this order)
+<!-- Each line OPENS with the backticked command; capture-gates.sh runs exactly that. -->
 1. `<typecheck/build command>` — source: <where you found it>
 2. `<test command>` — source: <…> | NOT FOUND — <the human's decision from Q-n>
 

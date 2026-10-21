@@ -89,3 +89,14 @@ test('plan-admin: refuses to approve a plan with a blocking question', () => {
   assert.equal(spawnSync('node', [admin, 'approve', f], { cwd: repo, env: { ...process.env, CLAUDE_PROJECT_DIR: repo } }).status, 0);
   assert.match(readFileSync(f, 'utf8'), /\*\*Approved:\*\* \d{4}-\d{2}-\d{2}/);
 });
+
+test('spec-lint 1.1.0: an uncovered P1 story is an error; a P3 story is not', () => {
+  const lint = P('sdd-engineering/skills/spec-writing/scripts/spec-lint.mjs');
+  const fx = P('sdd-engineering/evals/spec-requires-ac/files/specs/note-colours.md');
+  const r = spawnSync('node', [lint, fx], { encoding: 'utf8' });
+  assert.equal(r.status, 1);
+  assert.match(r.stdout, /US-2 \(P1\) is a mandatory requirement with no acceptance criterion/);
+  const p3 = path.join(mkdtempSync(path.join(os.tmpdir(), 'lint-')), 'p3.md');
+  writeFileSync(p3, readFileSync(fx, 'utf8').replace('- **US-2** (P1)', '- **US-2** (P3)'));
+  assert.equal(spawnSync('node', [lint, p3]).status, 0);
+});

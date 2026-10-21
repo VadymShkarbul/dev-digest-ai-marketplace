@@ -1,10 +1,15 @@
 ---
 name: spec-writing
-description: "Reference for writing sdd-engineering feature specs: the spec template, EARS patterns with good/bad pairs, weak-word list, ID and status rules, the spec linter and the human-only approval script, plus on-demand references (sweep profiles, LLM features, a11y, UX copy, requirement-quality checklist). Preloaded into sdd-engineering:spec-creator; read it when writing, reviewing or approving a spec."
+description: "Reference for writing sdd-engineering feature specs: the spec template, EARS patterns with good/bad pairs, weak-word list, ID and status rules, the spec linter and the human-only approval script, plus on-demand references (sweep profiles, LLM features, a11y, UX copy, requirement-quality checklist). Preloaded into sdd-engineering:spec-creator. Not for the main session: to write, finish or revise a spec, use sdd-engineering:spec-to-plan, which delegates to the spec-creator."
 user-invocable: false
 ---
 
 # Writing an sdd-engineering spec
+
+> **Main session (not the spec-creator agent):** stop here. You don't write or edit specs.
+> Load `sdd-engineering:spec-to-plan` and let it delegate to `sdd-engineering:spec-creator`
+> — the agent whose write scope, linter loop and question rounds keep a spec reviewable.
+> Reading a spec, or running the linter on one, is fine.
 
 The format authority is [references/template.md](references/template.md);
 `scripts/spec-lint.mjs` checks it mechanically. This skill covers what lint can't: how to
@@ -48,6 +53,12 @@ copy (`"Export"`) is exempt.
 - **Defaults become `A-n [default]`**; repo facts `[repo]`; human statements `[human]`.
 - **Status:** the agent writes `draft`; the human approves; `/sdd-engineering:run-plan`
   sets `implemented`.
+
+## Coverage rule (1.1.0)
+
+Every **P1 and P2** story is a mandatory requirement and needs at least one `AC-n` citing
+it (`(US-n)`); `spec-lint.mjs` reports an uncovered one as an `ERROR`, so the spec can be
+neither finished nor approved. A P3 story may stay without criteria while it is deferred.
 
 ## Requirement quality: every item must be
 
